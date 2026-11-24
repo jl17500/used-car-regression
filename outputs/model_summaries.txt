@@ -1,0 +1,71 @@
+FULL MODEL
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:             Sale_Price   R-squared:                       0.860
+Model:                            OLS   Adj. R-squared:                  0.856
+Method:                 Least Squares   F-statistic:                     199.2
+Date:                Tue, 24 Nov 2026   Prob (F-statistic):           2.91e-67
+Time:                        00:43:06   Log-Likelihood:                -1559.2
+No. Observations:                 168   AIC:                             3130.
+Df Residuals:                     162   BIC:                             3149.
+Df Model:                           5                                         
+Covariance Type:            nonrobust                                         
+==============================================================================
+                 coef    std err          t      P>|t|      [0.025      0.975]
+------------------------------------------------------------------------------
+Intercept    2.27e+04   1053.460     21.547      0.000    2.06e+04    2.48e+04
+Mileage_K    -97.2719     14.559     -6.681      0.000    -126.022     -68.522
+Age_Years  -1014.2238    191.616     -5.293      0.000   -1392.611    -635.837
+Horsepower    70.3441      4.718     14.909      0.000      61.027      79.661
+Accident   -2034.6975    503.335     -4.042      0.000   -3028.642   -1040.753
+Num_Owners  -136.9736    372.358     -0.368      0.713    -872.275     598.328
+==============================================================================
+Omnibus:                        0.514   Durbin-Watson:                   2.177
+Prob(Omnibus):                  0.773   Jarque-Bera (JB):                0.451
+Skew:                          -0.126   Prob(JB):                        0.798
+Kurtosis:                       2.974   Cond. No.                     1.11e+03
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+[2] The condition number is large, 1.11e+03. This might indicate that there are
+strong multicollinearity or other numerical problems.
+
+REDUCED MODEL (v1)
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:             Sale_Price   R-squared:                       0.860
+Model:                            OLS   Adj. R-squared:                  0.857
+Method:                 Least Squares   F-statistic:                     250.3
+Date:                Tue, 24 Nov 2026   Prob (F-statistic):           1.84e-68
+Time:                        00:43:06   Log-Likelihood:                -1559.3
+No. Observations:                 168   AIC:                             3129.
+Df Residuals:                     163   BIC:                             3144.
+Df Model:                           4                                         
+Covariance Type:            nonrobust                                         
+==============================================================================
+                 coef    std err          t      P>|t|      [0.025      0.975]
+------------------------------------------------------------------------------
+Intercept   2.259e+04   1011.737     22.332      0.000    2.06e+04    2.46e+04
+Mileage_K    -98.0061     14.383     -6.814      0.000    -126.408     -69.604
+Age_Years  -1038.4335    179.481     -5.786      0.000   -1392.842    -684.025
+Horsepower    70.2224      4.694     14.960      0.000      60.954      79.491
+Accident   -2015.6245    499.328     -4.037      0.000   -3001.610   -1029.639
+==============================================================================
+Omnibus:                        0.598   Durbin-Watson:                   2.183
+Prob(Omnibus):                  0.742   Jarque-Bera (JB):                0.480
+Skew:                          -0.131   Prob(JB):                        0.786
+Kurtosis:                       3.010   Cond. No.                     1.06e+03
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+[2] The condition number is large, 1.06e+03. This might indicate that there are
+strong multicollinearity or other numerical problems.
+
+VIF
+Mileage_K     5.42
+Age_Years     6.02
+Horsepower    1.01
+Accident      1.02
+Num_Owners    2.30

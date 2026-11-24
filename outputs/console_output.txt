@@ -1,0 +1,134 @@
+Data: 240 cars, 168 train, 72 test (seed 42)
+
+Full model (all five features)
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:             Sale_Price   R-squared:                       0.860
+Model:                            OLS   Adj. R-squared:                  0.856
+Method:                 Least Squares   F-statistic:                     199.2
+Date:                Tue, 24 Nov 2026   Prob (F-statistic):           2.91e-67
+Time:                        00:43:06   Log-Likelihood:                -1559.2
+No. Observations:                 168   AIC:                             3130.
+Df Residuals:                     162   BIC:                             3149.
+Df Model:                           5                                         
+Covariance Type:            nonrobust                                         
+==============================================================================
+                 coef    std err          t      P>|t|      [0.025      0.975]
+------------------------------------------------------------------------------
+Intercept    2.27e+04   1053.460     21.547      0.000    2.06e+04    2.48e+04
+Mileage_K    -97.2719     14.559     -6.681      0.000    -126.022     -68.522
+Age_Years  -1014.2238    191.616     -5.293      0.000   -1392.611    -635.837
+Horsepower    70.3441      4.718     14.909      0.000      61.027      79.661
+Accident   -2034.6975    503.335     -4.042      0.000   -3028.642   -1040.753
+Num_Owners  -136.9736    372.358     -0.368      0.713    -872.275     598.328
+==============================================================================
+Omnibus:                        0.514   Durbin-Watson:                   2.177
+Prob(Omnibus):                  0.773   Jarque-Bera (JB):                0.451
+Skew:                          -0.126   Prob(JB):                        0.798
+Kurtosis:                       2.974   Cond. No.                     1.11e+03
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+[2] The condition number is large, 1.11e+03. This might indicate that there are
+strong multicollinearity or other numerical problems. 
+
+Variance inflation factors (above 5 means the feature overlaps with others)
+Mileage_K     5.42
+Age_Years     6.02
+Horsepower    1.01
+Accident      1.02
+Num_Owners    2.30 
+
+Features with p > 0.05: ['Num_Owners']
+Reduced model (without them)
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:             Sale_Price   R-squared:                       0.860
+Model:                            OLS   Adj. R-squared:                  0.857
+Method:                 Least Squares   F-statistic:                     250.3
+Date:                Tue, 24 Nov 2026   Prob (F-statistic):           1.84e-68
+Time:                        00:43:06   Log-Likelihood:                -1559.3
+No. Observations:                 168   AIC:                             3129.
+Df Residuals:                     163   BIC:                             3144.
+Df Model:                           4                                         
+Covariance Type:            nonrobust                                         
+==============================================================================
+                 coef    std err          t      P>|t|      [0.025      0.975]
+------------------------------------------------------------------------------
+Intercept   2.259e+04   1011.737     22.332      0.000    2.06e+04    2.46e+04
+Mileage_K    -98.0061     14.383     -6.814      0.000    -126.408     -69.604
+Age_Years  -1038.4335    179.481     -5.786      0.000   -1392.842    -684.025
+Horsepower    70.2224      4.694     14.960      0.000      60.954      79.491
+Accident   -2015.6245    499.328     -4.037      0.000   -3001.610   -1029.639
+==============================================================================
+Omnibus:                        0.598   Durbin-Watson:                   2.183
+Prob(Omnibus):                  0.742   Jarque-Bera (JB):                0.480
+Skew:                          -0.131   Prob(JB):                        0.786
+Kurtosis:                       3.010   Cond. No.                     1.06e+03
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+[2] The condition number is large, 1.06e+03. This might indicate that there are
+strong multicollinearity or other numerical problems. 
+
+Adjusted R²: full 0.8558, reduced 0.8565
+v1 uses: ['Mileage_K', 'Age_Years', 'Horsepower', 'Accident']
+
+Training-set average sale price (baseline prediction): $25,875
+Fit on test cars
+              r2       rmse  train_adj_r2
+baseline -0.0085  7345.1278           NaN
+v1        0.8594  2742.4871        0.8565 
+
+Auction results (40 lots)
+               cars_bought  money_losers  total_profit  profit_per_car
+baseline                14            10         -6000            -429
+v1                      18             8         10700             594
+buy_every_car           40            27        -35500            -888 
+
+Lot-by-lot decisions
+ Lot  Auction_Price  Predicted_Price  Later_Sale_Price  Profit Baseline_Decision V1_Decision
+   1          21500          17832.0             19000   -4000               buy        pass
+   2          36100          30981.0             35600   -2000              pass        pass
+   3          26600          25417.0             28100       0              pass        pass
+   4          37800          34619.0             36700   -2600              pass        pass
+   5          23300          24953.0             24500    -300               buy         buy
+   6          28000          24475.0             28900    -600              pass        pass
+   7          24600          22615.0             22600   -3500              pass        pass
+   8          18300          20337.0             18600   -1200               buy         buy
+   9          29600          30003.0             28600   -2500              pass        pass
+  10          22400          22282.0             20500   -3400               buy        pass
+  11          29600          25133.0             29500   -1600              pass        pass
+  12          29700          33247.0             31500     300              pass         buy
+  13          30900          30917.0             32700     300              pass        pass
+  14          29200          35828.0             33200    2500              pass         buy
+  15          27100          26393.0             28500    -100              pass        pass
+  16          16100          21917.0             25000    7400               buy         buy
+  17          26400          25205.0             26000   -1900              pass        pass
+  18          28700          31229.0             30800     600              pass         buy
+  19          26000          35548.0             30900    3400              pass         buy
+  20          11400          13033.0             11000   -1900               buy         buy
+  21          33000          30145.0             30400   -4100              pass        pass
+  22          12200          16423.0             12300   -1400               buy         buy
+  23          37900          36638.0             37000   -2400              pass        pass
+  24          18300          19965.0             18300   -1500               buy         buy
+  25          17200          19360.0             19300     600               buy         buy
+  26          26700          32182.0             29400    1200              pass         buy
+  27          12800          17333.0             17500    3200               buy         buy
+  28          29000          30913.0             30800     300              pass         buy
+  29          31900          28662.0             27000   -6400              pass        pass
+  30          15200          15241.0             15500   -1200               buy        pass
+  31          28700          35286.0             30000    -200              pass         buy
+  32          15100          17554.0             16200    -400               buy         buy
+  33          37700          34651.0             37300   -1900              pass        pass
+  34          32600          33630.0             33700    -400              pass        pass
+  35          27700          25963.0             26300   -2900              pass        pass
+  36          10400          12068.0              9000   -2900               buy         buy
+  37          19600          26908.0             22100    1000               buy         buy
+  38          32500          27883.0             28600   -5400              pass        pass
+  39          34500          35665.0             36700     700              pass        pass
+  40          36900          34130.0             38100    -300              pass        pass
+
+Charts written to outputs/charts
